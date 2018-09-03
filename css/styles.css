@@ -1,0 +1,511 @@
+@charset "UTF-8";
+
+
+/* --------------------------------
+  Font-face (Bootstrap Glyphicons)
+  -------------------------------- */
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url('../fonts/glyphicons-halflings-regular.eot');
+	src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+       url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
+       url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
+}
+
+
+/* --------------------------------
+  General
+  -------------------------------- */
+
+* {
+  outline: none;
+}
+
+::-moz-selection,
+::selection {
+  background: #6bb9f0;
+}
+
+
+/* ----- Structure ----- */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: #11192a;
+  background: #bec3c8;
+}
+
+#wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#loading {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -27px 0 0 -50px;
+}
+
+
+/* ----- Elements ----- */
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-transform: uppercase;
+  color: inherit;
+  border: none;
+  background: transparent;
+  vertical-align: top;
+}
+
+.done input {
+  cursor: default;
+}
+
+img {
+  border: none;
+}
+
+
+/* --------------------------------
+  Header
+  -------------------------------- */
+
+#header {
+  position: relative;
+  height: 46px;
+  color: #fff;
+  background: #39414e;
+  z-index: 1;
+}
+
+#logo {
+  display: block;
+  position: absolute;
+  top: 16px;
+  left: 9px;
+  width: 28px;
+  height: auto;
+}
+
+#lists-wrapper {
+  max-width: 320px;
+  margin: 0 46px 0 92px;
+  overflow: hidden;
+}
+
+.adding #lists-wrapper,
+.editing #lists-wrapper,
+.deleting #lists-wrapper {
+  max-width: 100%;
+  margin-right: 0;
+}
+
+#header .input-container {
+  padding: 0 0 0 10px;
+}
+
+#lists,
+#list-editor input {
+  font-family: inherit;
+  font-size: 1.1em;
+  line-height: 46px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: inherit;
+}
+
+#lists {
+  width: 115%;
+  height: 46px;
+  padding-left: 6px;
+  background: #39414e;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+#lists option {
+  padding: 10px 8px;
+  border: none;
+}
+
+#list-editor {
+  height: 100%;
+  line-height: 46px;
+}
+
+
+/* ----- List menu ----- */
+
+#list-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+#list-menu-items {
+  background: #39414e;
+}
+
+.list-menu-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.list-menu-item a,
+.list-menu-item a:visited {
+  display: block;
+  height: 100%;
+  padding-left: 15px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.no-touch .list-menu-item a:hover,
+.list-menu-item a:active {
+  background: #19212e;
+}
+
+
+/* --------------------------------
+  Items
+  -------------------------------- */
+
+#item-list {
+  position: relative;
+}
+
+.item {
+  position: relative;
+  height: 46px;
+  line-height: 46px;
+  border-bottom: 1px solid #ced3d8;
+  background: #fff;
+}
+
+.item .input-container {
+  padding: 0 46px 0 102px;
+}
+
+.item.editing .input-container,
+.item.deleting .input-container {
+  padding-right: 92px;
+}
+
+.no-touch .item .input-container:hover,
+.item .input-container:active {
+  background: #ecf2f5;
+}
+
+
+/* ----- Item action highlights ----- */
+
+.done .input-container {
+  color: #b5c5c6;
+  background: #fff !important;
+}
+
+.adding .input-container,
+.editing .input-container {
+  color: #11192a;
+  background: #d8e2e8 !important;
+}
+
+.deleting .input-container {
+  color: #fff;
+  background: #f64766 !important;
+}
+
+
+/* --------------------------------
+  Buttons
+  -------------------------------- */
+
+.left-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.right-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.button {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  font-size: 16px;
+  line-height: 40px;
+  font-family: 'Glyphicons Halflings';
+  text-align: center;
+  color: #fff;
+}
+
+.button.round {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+/* ----- Header buttons ----- */
+
+#list-menu .button {
+  vertical-align: middle;
+}
+
+#open-list-menu {
+}
+
+.no-touch #open-list-menu:hover,
+#open-list-menu:active {
+  background: #19212e;
+}
+
+
+/* ----- Item buttons ----- */
+
+.sort {
+  margin: 0;
+  padding: 3px 3px 4px 3px;
+  color: #8590a2;
+  background: #bec3c8;
+  cursor: move;
+}
+
+.no-touch .sort:hover,
+.sort:active {
+  color: #39414e;
+}
+
+.status {
+  color: #39414e;
+  background: #c0c8c9;
+}
+
+.no-touch .status:hover,
+.status:active {
+  color: #fff;
+  background: #18a6ab;
+}
+
+.done .status {
+  color: #99a1ae;
+  background: #e2e7e8;
+}
+
+.item .delete {
+  background: #f64766;
+}
+
+.no-touch .item .delete:hover,
+.item .delete:active {
+  background: #d62746;
+}
+
+.confirm {
+  margin-right: 0;
+  background: #18a6ab;
+}
+
+.no-touch .confirm:hover,
+.confirm:active {
+  background: #00868b;
+}
+
+.cancel {
+  background: #39414e;
+}
+
+.no-touch .cancel:hover,
+.cancel:active {
+  background: #19212e;
+}
+
+#new-item {
+  position: relative;
+  margin-left: 46px;
+  padding-left: 46px;
+  line-height: 46px;
+  color: #fff;
+  background: #18a6ab;
+}
+
+.no-touch #new-item:hover,
+#new-item:active {
+  background: #00868b;
+}
+
+
+/* --------------------------------
+  Icons
+  -------------------------------- */
+
+.sort:before {
+  content: '\e150';
+}
+
+.status:before {
+  content: '\e116';
+}
+
+.delete:before {
+  content: '\e020';
+}
+
+.confirm:before {
+  content: '\e013';
+}
+
+.cancel:before {
+  content: '\e014';
+}
+
+.plus:before {
+  content: '+';
+}
+
+.menu:before {
+  content: '\e236';
+}
+
+.edit:before {
+  content: '\270f';
+}
+
+.share:before {
+  content: '\e095';
+}
+
+
+/* --------------------------------
+  Phase visibility rules
+  -------------------------------- */
+
+#loading {
+  display: none;
+}
+
+.loading #loading {
+  display: block;
+}
+
+
+/* ----- Header elements ----- */
+
+#lists {
+  display: none;
+}
+
+.ready #lists {
+  display: block;
+}
+
+.adding #lists,
+.editing #lists,
+.deleting #lists {
+  display: none;
+}
+
+#list-editor {
+  display: none;
+}
+
+.adding #list-editor,
+.editing #list-editor,
+.deleting #list-editor {
+  display: block;
+}
+
+#list-menu {
+  display: none;
+}
+
+.ready #list-menu {
+  display: block;
+}
+
+.adding #list-menu,
+.editing #list-menu,
+.deleting #list-menu {
+  display: none;
+}
+
+#list-menu-items {
+  display: none;
+}
+
+
+/* ----- Item elements ----- */
+
+#items {
+  display: none;
+}
+
+.ready #items {
+  display: block;
+}
+
+.editing .delete,
+.deleting .delete {
+  display: none;
+}
+
+.item .confirm,
+.item .cancel {
+  display: none;
+}
+
+.editing .confirm,
+.editing .cancel,
+.deleting .confirm,
+.deleting .cancel {
+  display: inline-block;
+}
+
+#new-item {
+  display: none;
+}
+
+.ready #new-item {
+  display: block;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "shopping-basket",
+  "version": "1.0.0",
+  "description": "Coding exercise to create a shopping basket application, BSK",
+  "author": "Mika Paulasaari",
+  "contributors": [
+    "Mika Paulasaari <mika@paulasaari.com>"
+  ],
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mpaulasaari/shopping-basket-application.git"
+  }
+}

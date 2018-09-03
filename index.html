@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=0.8, minimum-scale: 0.8, maximum-scale=0.8, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noindex, nofollow">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="img/touch-icons/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="img/touch-icons/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="img/touch-icons/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="img/touch-icons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+
+    <title>Bsk</title>
+
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+
+    <script src="scripts/vendor/firebase.js"></script>
+    <script src="scripts/vendor/jquery-1.11.2.min.js"></script>
+    <script src="scripts/vendor/jquery-ui.min.js"></script>
+    <script src="scripts/vendor/jquery.ui.touch-punch.min.js"></script>
+    <script src="scripts/vendor/modernizr.custom.67764.js"></script>
+    <script src="scripts/main.js"></script>
+
+  </head>
+
+  <body class="loading">
+
+
+    <!-- Wrapper -->
+
+    <div id="wrapper">
+
+
+      <!-- Header -->
+
+      <header id="header">
+
+
+        <!-- Logo -->
+
+        <img src="img/logo.png" id="logo" alt="Bsk">
+
+
+        <!-- Lists -->
+
+        <div id="lists-wrapper">
+
+
+          <!-- List select -->
+
+          <select id="lists" title="Change list">
+            <option id="option"></option>
+          </select>
+
+
+          <!-- List editor -->
+
+          <div id="list-editor">
+
+             <div class="input-container">
+               <input type="text" placeholder="List name">
+             </div>
+
+             <div class="right-buttons">
+               <a class="button round confirm" title="Confirm"></a><a class="button round cancel" title="Cancel"></a>
+             </div>
+
+           </div>
+
+
+        </div>
+
+
+        <!-- List menu -->
+
+        <div id="list-menu">
+
+          <a class="button" id="open-list-menu">
+            <span class="menu"></span>
+          </a>
+
+          <ul id="list-menu-items">
+
+            <li class="list-menu-item">
+              <a id="new-list">
+                <span class="title">New list</span>
+                <span class="button">
+                  <span class="plus"></span>
+                </span>
+              </a>
+            </li>
+
+            <li class="list-menu-item">
+              <a id="edit-list">
+                <span class="title">Rename list</span>
+                <span class="button">
+                  <span class="edit"></span>
+                </span>
+              </a>
+            </li>
+
+            <li class="list-menu-item">
+              <a id="share-list">
+                <span class="title">Send list</span>
+                <span class="button">
+                  <span class="share"></span>
+                </span>
+              </a>
+            </li>
+
+            <li class="list-menu-item">
+              <a id="delete-list">
+                <span class="title">Delete list</span>
+                <span class="button">
+                  <span class="delete"></span>
+                </span>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+      </header>
+
+
+      <!-- Items -->
+
+      <div id="items">
+
+        <ul id="item-list">
+
+
+          <!-- Item placeholder -->
+
+          <li class="item" id="item">
+
+            <div class="left-buttons">
+              <a class="button sort" title="Sort"></a><a class="button round status"></a>
+            </div>
+
+            <div class="input-container">
+              <input type="text" readonly>
+            </div>
+
+            <div class="right-buttons">
+              <a class="button round confirm" title="Confirm"></a><a class="button round cancel" title="Cancel"></a><a class="button round delete" title="Delete item"></a>
+            </div>
+
+          </li>
+
+
+        </ul>
+
+
+        <!-- New item button -->
+
+        <a id="new-item" title="New item">
+
+          <div class="left-buttons">
+            <span class="button plus"></span>
+          </div>
+
+          <span class="title">NEW ITEM</span>
+
+        </a>
+
+
+      </div>
+
+
+      <!-- Loading -->
+
+      <img src="img/loading.png" id="loading" alt="Loading">
+
+
+    </div>
+
+
+  </body>
+
+</html>

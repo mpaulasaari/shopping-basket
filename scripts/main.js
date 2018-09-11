@@ -615,6 +615,12 @@ $(function() {
         _selected =      (_key === listName ? true : false),
         $newListOption = $listOption.clone(); // Use the option placeholder as a template for list options
 
+    if (typeof _value === 'undefined') { // "Filter" out autoComplete
+
+      return false;
+
+    }
+
     $newListOption // Set correct values for the list option
       .attr({
         'id':    _key,

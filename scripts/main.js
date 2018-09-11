@@ -565,6 +565,12 @@ $(function() {
 
         e.forEach(function(f) { // Loop through existing lists
 
+          if (typeof f.val().name === 'undefined') {
+
+            return false;
+
+          }
+
           _key =   f.key(); // This will get the key of latest (highest priority) list, so that it'll be loaded by default
           _value = f.val().name;
 

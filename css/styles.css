@@ -251,6 +251,34 @@ img {
 }
 
 
+/* ----- Item autocomplete ----- */
+
+.item .input-container .ui-autocomplete {
+  position: absolute;
+  top: 46px;
+  left: 46px;
+  width: auto !important;
+  border-top: 1px solid #ced3d8;
+  border-right: 1px solid #ced3d8;
+  z-index: 999;
+}
+
+.item .input-container .ui-autocomplete .ui-menu-item {
+  padding: 0 15px;
+  margin-left: -15px;
+  line-height: 44px;
+  color: rgba(0, 0, 0, 0.75);
+  text-transform: uppercase;
+  background: #ecf2f5;
+  border-bottom: 1px solid #ced3d8;
+  border-left: 1px solid #ced3d8;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+
 /* --------------------------------
   Buttons
   -------------------------------- */

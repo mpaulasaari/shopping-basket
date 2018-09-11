@@ -12,6 +12,17 @@ var fbDatabaseURL =  '' // Change to https://XXXX.firebaseio.com/
     itemPriority =   0, // itemPriority is used for sorting the items by priority
     itemSlideSpeed = 100,
     keys =           { ENTER: 13, ESC: 27 };
+    fb =                new Firebase(fbDatabaseURL), // Firebase database reference
+    hash =              window.location.hash,
+    autoCompleteList =  fb.child('autoComplete'),
+    autoCompleteItems = [],
+    listName =          hash ? hash.slice(1) : 'null',
+    list =              fb.child(listName),
+    listItems =         list.child('items'),
+    listPriority =      0, // listPriority is for sorting the lists by priority
+    itemPriority =      0, // itemPriority is used for sorting the items by priority
+    itemSlideSpeed =    100,
+    keys =              { ENTER: 13, ESC: 27 };
 
 
 /**
@@ -324,6 +335,10 @@ var Item = (function() {
 
           _input.removeAttr('readonly').blur().focus();
 
+          _input.autocomplete({
+            source: autoCompleteItems
+          });
+
       }
 
     }
@@ -389,6 +404,7 @@ var Item = (function() {
     var _el =        $el.length ? $el : $(this),
         _container = _el.closest('.item'),
         _input =     _container.find('input'),
+        _name =      _input.val().toLowerCase()
         _key =       _container.attr('id'),
         _itemRef =   listItems.child(_key);
 
@@ -396,9 +412,20 @@ var Item = (function() {
 
       _itemRef.update({
 
-        name: _input.val()
+        name: _name
 
       }); // Update item value in Firebase. Same function for adding and editing since adding an item creates a blank item which is set straight to edit mode
+
+
+      if (autoCompleteItems.indexOf(_name) === -1) {
+
+        autoCompleteList.push({
+
+          name: _name
+
+        }); // Add new items to autoCompleteList
+
+      }
 
     } else if (_itemAction === 'delete-item') {
 
@@ -697,7 +724,10 @@ $(function() {
           .addClass('editing')
           .find('input')
             .removeAttr('readonly')
-            .focus();
+            .focus()
+            .autocomplete({
+              source: autoCompleteItems
+            });
 
       }
 
@@ -798,6 +828,17 @@ $(function() {
   }
 
 
+  function initAutoComplete() {
+
+    autoCompleteList.on('child_added', function(e) {
+
+      autoCompleteItems.push(e.val().name);
+
+    });
+
+  }
+
+
   /**
    * Initialize lists and items
    */
@@ -805,6 +846,8 @@ $(function() {
   initLists();
 
   initItems();
+
+  initAutoComplete();
 
 
   /**

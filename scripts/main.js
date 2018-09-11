@@ -460,6 +460,14 @@ var Item = (function() {
 
     }); // Update item's status in Firebase
 
+    if (_newStatus === 'done') {
+
+      _itemRef.setPriority(itemPriority++);
+
+      _container.insertAfter(_container.siblings(":last")); // Move item to end of list
+
+    }
+
     $(this).attr('title', _styledStatus); // Set new status as tooltip
 
     _container.removeClass(_currentStatus).addClass(_newStatus); // Give item a class to match it's status

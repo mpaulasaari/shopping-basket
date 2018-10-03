@@ -2,16 +2,7 @@
  * Global variables
  */
 
-var fbDatabaseURL =  '' // Change to https://XXXX.firebaseio.com/
-    fb =             new Firebase(fbDatabaseURL), // Firebase database reference
-    hash =           window.location.hash,
-    listName =       hash ? hash.slice(1) : 'null',
-    list =           fb.child(listName),
-    listItems =      list.child('items'),
-    listPriority =   0, // listPriority is for sorting the lists by priority
-    itemPriority =   0, // itemPriority is used for sorting the items by priority
-    itemSlideSpeed = 100,
-    keys =           { ENTER: 13, ESC: 27 };
+var fbDatabaseURL =     '' // Change to https://XXXX.firebaseio.com/
     fb =                new Firebase(fbDatabaseURL), // Firebase database reference
     hash =              window.location.hash,
     autoCompleteList =  fb.child('autoComplete'),

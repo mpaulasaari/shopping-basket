@@ -20,20 +20,20 @@ it expects the database to have open r/w permissions.
 
 ### Installing
 
-Clone the code repository
+1. Clone the code repository:
 
 ```
 $ git clone git@github.com:mpaulasaari/shopping-basket-application.git
 ```
 
-Edit `main.js` file and add your Firebase database URL on line 5:
+2. Edit `main.js` file and add your Firebase database URL on **line 5**:
 
 ```
-var fbDatabaseURL =  'https://XXXX.firebaseio.com/'
+var fbDatabaseURL = 'https://XXXX.firebaseio.com/'
 ```
 
-Open `index.html` in your preferred browser. The application does not require a
-localhost server.
+3. Open `index.html` in your preferred browser (Chrome recommended). The
+application does not require a localhost server.
 
 ## Built With
 
@@ -50,4 +50,4 @@ localhost server.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md)
-file for details
+file for details.

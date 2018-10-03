@@ -2,16 +2,18 @@
  * Global variables
  */
 
-var fbDatabaseURL =  '' // Change to https://XXXX.firebaseio.com/
-    fb =             new Firebase(fbDatabaseURL), // Firebase database reference
-    hash =           window.location.hash,
-    listName =       hash ? hash.slice(1) : 'null',
-    list =           fb.child(listName),
-    listItems =      list.child('items'),
-    listPriority =   0, // listPriority is for sorting the lists by priority
-    itemPriority =   0, // itemPriority is used for sorting the items by priority
-    itemSlideSpeed = 100,
-    keys =           { ENTER: 13, ESC: 27 };
+var fbDatabaseURL =     '' // Change to https://XXXX.firebaseio.com/
+    fb =                new Firebase(fbDatabaseURL), // Firebase database reference
+    hash =              window.location.hash,
+    autoCompleteList =  fb.child('autoComplete'),
+    autoCompleteItems = [],
+    listName =          hash ? hash.slice(1) : 'null',
+    list =              fb.child(listName),
+    listItems =         list.child('items'),
+    listPriority =      0, // listPriority is for sorting the lists by priority
+    itemPriority =      0, // itemPriority is used for sorting the items by priority
+    itemSlideSpeed =    100,
+    keys =              { ENTER: 13, ESC: 27 };
 
 
 /**
@@ -324,6 +326,10 @@ var Item = (function() {
 
           _input.removeAttr('readonly').blur().focus();
 
+          _input.autocomplete({
+            source: autoCompleteItems
+          });
+
       }
 
     }
@@ -389,6 +395,7 @@ var Item = (function() {
     var _el =        $el.length ? $el : $(this),
         _container = _el.closest('.item'),
         _input =     _container.find('input'),
+        _name =      _input.val().toLowerCase()
         _key =       _container.attr('id'),
         _itemRef =   listItems.child(_key);
 
@@ -396,9 +403,20 @@ var Item = (function() {
 
       _itemRef.update({
 
-        name: _input.val()
+        name: _name
 
       }); // Update item value in Firebase. Same function for adding and editing since adding an item creates a blank item which is set straight to edit mode
+
+
+      if (autoCompleteItems.indexOf(_name) === -1) {
+
+        autoCompleteList.push({
+
+          name: _name
+
+        }); // Add new items to autoCompleteList
+
+      }
 
     } else if (_itemAction === 'delete-item') {
 
@@ -459,6 +477,14 @@ var Item = (function() {
       status: _newStatus
 
     }); // Update item's status in Firebase
+
+    if (_newStatus === 'done') {
+
+      _itemRef.setPriority(itemPriority++);
+
+      _container.insertAfter(_container.siblings(":last")); // Move item to end of list
+
+    }
 
     $(this).attr('title', _styledStatus); // Set new status as tooltip
 
@@ -530,6 +556,12 @@ $(function() {
 
         e.forEach(function(f) { // Loop through existing lists
 
+          if (typeof f.val().name === 'undefined') {
+
+            return false;
+
+          }
+
           _key =   f.key(); // This will get the key of latest (highest priority) list, so that it'll be loaded by default
           _value = f.val().name;
 
@@ -579,6 +611,12 @@ $(function() {
         _value =         e.val().name,
         _selected =      (_key === listName ? true : false),
         $newListOption = $listOption.clone(); // Use the option placeholder as a template for list options
+
+    if (typeof _value === 'undefined') { // "Filter" out autoComplete
+
+      return false;
+
+    }
 
     $newListOption // Set correct values for the list option
       .attr({
@@ -689,7 +727,10 @@ $(function() {
           .addClass('editing')
           .find('input')
             .removeAttr('readonly')
-            .focus();
+            .focus()
+            .autocomplete({
+              source: autoCompleteItems
+            });
 
       }
 
@@ -790,6 +831,17 @@ $(function() {
   }
 
 
+  function initAutoComplete() {
+
+    autoCompleteList.on('child_added', function(e) {
+
+      autoCompleteItems.push(e.val().name);
+
+    });
+
+  }
+
+
   /**
    * Initialize lists and items
    */
@@ -797,6 +849,8 @@ $(function() {
   initLists();
 
   initItems();
+
+  initAutoComplete();
 
 
   /**
